@@ -1,0 +1,15 @@
+.profile-menu> .dropdown-menu{ 
+    
+      right: 0;
+      left: unset;
+    
+    /* .fa-fw{
+      margin-right: 10px;
+    }   */
+  }
+  /* .toggle-change{
+      &::after {
+      border-top: 0;
+      border-bottom: .3em solid;
+      }
+  }  */

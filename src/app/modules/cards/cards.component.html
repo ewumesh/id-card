@@ -1,0 +1,53 @@
+<div class="row">
+    <div cols="12" class="col-md-12">
+        <div class="card" tile style="background-color:#272640; color: #fff;padding:5px 0; border-radius: 0;">
+            <h1>Generate Card</h1>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin:50px 0">
+<div class="col-md-6" *ngFor="let data of userLists; index as i;">
+  <div class="card" id="myId" style="height:54mm; width:86mm; border:1px solid #000;">
+    <div class="row" style="padding:3px 0">
+      <div class="col-md-3 text-center" style="padding-top:10px; padding-left:15px">
+        <!-- <img height="70" src="@/assets/images/tu-logo.png"/> -->
+      </div>
+      <div class="col-md-9" style="padding-top:10px; color:#0096c7">
+        <div style="font-weight:bold; font-size:16pt">{{data.universityInfo.universityName}}</div>
+        <div style="font-weight:medium; font-size:13pt">{{data.universityInfo.uDepartment}}</div>
+        <div style="font-size:11px; padding-top:2px">{{data.universityInfo.location}}</div>
+        <div style="font-size:10px; color:#000">Email: {{data.universityInfo.universityEmail}}, URL: {{data.universityInfo.url}}</div>
+        <div style="font-size:10px; color:#000">Phone no:{{data.universityInfo.phoneNo}}</div>
+      </div>
+
+      <div class="col-md-12 text-center" style="background-color:#023e8a; color:#fff; padding:2px 0; font-size:12px;" >
+        <span style="text-transform:uppercase; letter-spacing: 3px;">{{data.cardType}}</span>
+      </div>
+    </div>
+    
+    <div class="row" style="text-align:left; padding:0 10px; font-size:10px;font-family: Arial, Helvetica, sans-serif;">
+      <!-- <barcode style=" height:20px; z-index:5555;" v-bind:value="barcodeValue">
+          Show this if the rendering fails.
+      </barcode> -->
+      <div class="col-md-10">
+        <div>Name: {{data.name}}</div>
+        <div style="margin-top:2px !important;">Address: {{data.address}}</div>
+        <div style="margin-top:2px !important;">Email: {{data.email}}</div>
+        <div style="margin-top:2px !important;">Department: {{data.department}}</div>
+        <div style="margin-top:2px !important;">Phone: {{data.phoneNo}}</div>
+        <div style="margin-top:2px !important;">Issued On: {{data.issuedDate}}
+        <div class="barcode">
+          <!-- <barcode displayValue="false" style="margin: -28px 0 0 116px; !important;" height="15" width="1" v-bind:value="barcodeValue">
+            Show this if the rendering fails.
+          </barcode> -->
+        </div>
+      </div>
+    </div>
+      <div class="col-md-2">
+        <img height="65" :src="data.image">
+      </div>
+    </div>
+</div>
+<button class="btn btn-primary" (click)="generateCard(data)"></button>
+</div>
+</div>
