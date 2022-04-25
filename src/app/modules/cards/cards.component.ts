@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 export class CardsComponent implements OnInit {
     userDetails:any =  []
 
-    userLists = [{
+    userLists:any[] = [{
         "address": "Bharatpur, Chitwan",
         "address2": "Bharatpur-10, Dipendra Nagar",
         "altaddress_address": "Kirtipur",
