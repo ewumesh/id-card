@@ -1,18 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Inject } from '@angular/core';
 import html2canvas from "html2canvas";
-// import * as JSZip from 'jszip';
-// import * as FileSaver from 'file-saver';
+import { Observable } from 'rxjs';
 
-// import { saveAs } from "file-saver";
-// import JSZip from "jszip";
+// @ts-ignore
+// import * as JSZip from 'jszip';
+// @ts-ignore
+// import * as FileSaver from 'file-saver';
 
 @Component({
     templateUrl: './cards.component.html',
     styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-    userDetails:any =  []
+    userDetails:any =  [];
+    selectedFiles?: FileList;
+    selectedFileNames: string[] = []
+    progressInfos: any[] = [];
+    message: string[] = [];
+    previews: string[] = [];
+    imageInfos?: Observable<any>;
 
     userLists:any[] = [{
         "address": "Bharatpur, Chitwan",
@@ -1435,7 +1441,8 @@ export class CardsComponent implements OnInit {
         "updated_on": "2021-12-09T10:43:40+05:45",
         "userid": "harigopal.shrestha"
     }]
-    constructor() { }
+
+    signatureImagePath: string[] = ['../../../assets/sign.png'];
 
     ngOnInit(): void { }
 
@@ -1453,7 +1460,7 @@ export class CardsComponent implements OnInit {
         const image = canvas
           .toDataURL("image/png")
           .replace("image/png", "image/octet-stream");
-        
+
         const a = document.createElement("a");
         a.style.display = "none";
         a.setAttribute("download", data.firstname +`.png`);
@@ -1461,17 +1468,44 @@ export class CardsComponent implements OnInit {
         a.click();
       }
 
-        // saveAsZip() {
-  //   const zip = new JSZip();
-  //   zip.file("hello.txt", "Hello[p my)6cxsw2q");
-  //   zip.file("hello.txt", "Hello World\n");
 
-  //   zip.file("nested/hello.txt", "Hello World\n");
-  //   // zip.folder("nested").file("hello.txt", "Hello World\n");
-  //   zip.generateAsync({type:"blob"})
-  //   .then(function(content:any) {
-  //       saveAs(content, "example.zip");
-  //   });
-  // }
-    
+selectFiles(event: any): void {
+    this.message = [];
+    this.progressInfos = [];
+    this.selectedFileNames = [];
+    this.selectedFiles = event.target.files;
+
+    this.previews = [];
+    if (this.selectedFiles && this.selectedFiles[0]) {
+      const numberOfFiles = this.selectedFiles.length;
+      for (let i = 0; i < numberOfFiles; i++) {
+        const reader = new FileReader();
+
+        reader.onload = (e: any) => {
+          this.previews.push(e.target.result);
+        };
+
+        reader.readAsDataURL(this.selectedFiles[i]);
+
+        this.selectedFileNames.push(this.selectedFiles[i].name);
+      }
+    }
+  }
+
+
+upload(): void {
+    this.signatureImagePath = this.previews;
+  }
+
+  downloadZip(){
+    // const zip = new JSZip();
+    // zip.file('hello.txt', 'Hello[p my)6cxsw2q');
+    // zip.file('hello1.txt', 'Hello World\n');
+    // zip.generateAsync({ type: 'blob' }).then(function (content:any) {
+    //   zip.loadAsync(content).then(function (zip:any) {
+    //     console.log(zip);
+    //   });
+    // });
+  }
+
 }
