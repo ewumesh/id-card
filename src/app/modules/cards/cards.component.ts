@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import html2canvas from "html2canvas";
+// import * as JSZip from 'jszip';
+// import * as FileSaver from 'file-saver';
+
+// import { saveAs } from "file-saver";
+// import JSZip from "jszip";
+
 @Component({
     templateUrl: './cards.component.html',
     styleUrls: ['./cards.component.css']
@@ -1435,5 +1442,36 @@ export class CardsComponent implements OnInit {
     generateCard(data: any) {
         console.log(data)
     }
+
+
+    async printCard(data:any) {
+        const canvas =  await html2canvas(
+          document.getElementById("card") as HTMLImageElement
+        );
+        canvas.style.display = "block";
+        document.body.appendChild(canvas);
+        const image = canvas
+          .toDataURL("image/png")
+          .replace("image/png", "image/octet-stream");
+        
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.setAttribute("download", data.firstname +`.png`);
+        a.setAttribute("href", image);
+        a.click();
+      }
+
+        // saveAsZip() {
+  //   const zip = new JSZip();
+  //   zip.file("hello.txt", "Hello[p my)6cxsw2q");
+  //   zip.file("hello.txt", "Hello World\n");
+
+  //   zip.file("nested/hello.txt", "Hello World\n");
+  //   // zip.folder("nested").file("hello.txt", "Hello World\n");
+  //   zip.generateAsync({type:"blob"})
+  //   .then(function(content:any) {
+  //       saveAs(content, "example.zip");
+  //   });
+  // }
     
 }
