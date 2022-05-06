@@ -20,8 +20,8 @@
             <div class="col-md-3 text-center" style="padding-top:10px; padding-left:15px">
               <img height="70" src="../../../assets/logo.png"/>
             </div>
-            <div class="col-md-9" style="color:#0096c7; margin: 0 !important;padding: 0 !important;">
-              <div style="font-weight:bold; font-size:12px">Tribhuwan University</div>
+            <div class="col-md-9" style="color:#0096c7; margin: 0 !important;padding: 0 !important;line-height: 1.5;">
+              <div style="font-weight:bold; font-size:12px; margin: 0; padding: 0;">Tribhuwan University</div>
               <div style="font-size:10px">Central Library</div>
               <div style="font-size:10px;">kirtipur, Kathmandu</div>
               <div style="font-size:10px; color:#000;margin: 0;padding: 0;">Email: tucl@tucl.org.np, URL: www.tucl.org.np</div>
@@ -37,7 +37,7 @@
             <!-- <barcode style=" height:20px; z-index:5555;" v-bind:value="barcodeValue">
                 Show this if the rendering fails.
             </barcode> -->
-            <div class="col-md-10">
+            <div class="col-md-10" style="line-height: 1.5;">
               <div>Name: {{data.firstname}} {{data.surname}}</div>
               <div>Address: {{data.address}}</div>
               <div>Email: {{data.email}}</div>
@@ -52,7 +52,9 @@
             </div>
           </div>
             <div class="col-md-2">
-              <img height="65" :src="data.image">
+              <img height="65" src="../../../assets/pp.jpg">
+              <img style="top: 151px;right: -8px;position: absolute;" height="50" src="../../../assets/sign.png"/>
+              <img height="100" style="top: 82px; right: 3px; position: absolute;" src="../../../assets/stamp.png"/>
             </div>
           </div>
       </div>
