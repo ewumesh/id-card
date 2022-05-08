@@ -7,6 +7,14 @@ import { Observable } from 'rxjs';
 // @ts-ignore
 // import * as FileSaver from 'file-saver';
 
+// import:
+import * as JSZip from 'jszip';
+
+//Then, it is used as follows:
+let zipFile: JSZip = new JSZip();
+import * as FileSaver from 'file-saver';  
+
+
 @Component({
     templateUrl: './cards.component.html',
     styleUrls: ['./cards.component.css']
@@ -1450,6 +1458,27 @@ export class CardsComponent implements OnInit {
         console.log(data)
     }
 
+   async download() {
+        var zip = new JSZip();
+        // const canvas =  await html2canvas(
+        //     document.getElementById("card") as HTMLImageElement
+        //   );
+        //   canvas.style.display = "block";
+        //   document.body.appendChild(canvas);
+        //   const image = canvas
+        //     .toDataURL("image/png")
+        //     .replace("image/png", "image/octet-stream");
+        //     zip.file("image", image)
+
+        zip.file("Title.txt", 'title');
+        var imgFolder = zip.folder("cards");
+        
+        zip.generateAsync({ type: "blob" })
+          .then(function (content:any) {
+            FileSaver.saveAs(content, "cards.zip");
+          });
+      }
+
 
     async printCard(data:any) {
         const canvas =  await html2canvas(
@@ -1469,7 +1498,7 @@ export class CardsComponent implements OnInit {
       }
 
 
-selectFiles(event: any): void {
+    selectFiles(event: any): void {
     this.message = [];
     this.progressInfos = [];
     this.selectedFileNames = [];

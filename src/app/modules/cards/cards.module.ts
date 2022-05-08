@@ -2,14 +2,17 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
-import { CardsComponent } from './cards.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+
+import { CardsComponent } from './cards.component';
+
 
 @NgModule({
     declarations: [CardsComponent],
-    imports: [ CommonModule,MatTabsModule,MatInputModule,MatIconModule,MatToolbarModule, RouterModule.forChild([
+    imports: [ CommonModule,MatTabsModule,MatGridListModule,MatFormFieldModule,MatToolbarModule,MatInputModule, RouterModule.forChild([
         {path: '', component: CardsComponent}
     ]) ],
     exports: [],
