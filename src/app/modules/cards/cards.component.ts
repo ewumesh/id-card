@@ -1463,12 +1463,8 @@ export class CardsComponent implements OnInit {
         // const canvas =  await html2canvas(
         //     document.getElementById("card") as HTMLImageElement
         //   );
-        //   canvas.style.display = "block";
-        //   document.body.appendChild(canvas);
-        //   const image = canvas
-        //     .toDataURL("image/png")
-        //     .replace("image/png", "image/octet-stream");
-        //     zip.file("image", image)
+
+        //   zip.file("image.png", savable.src.substr(savable.src.indexOf(',')+1), {base64: true});
 
         zip.file("Title.txt", 'title');
         var imgFolder = zip.folder("cards");
