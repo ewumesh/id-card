@@ -1561,14 +1561,13 @@ export class CardsComponent implements OnInit {
     // }
 
     this.userLists.forEach(async (item, cId) => {
-      // let el = document.getElementById(item.email) as HTMLImageElement;
+        // let el = document.getElementById(item.email) as HTMLImageElement;
       const canvas = await html2canvas(document.getElementById(item.email) as HTMLImageElement);
       canvas.style.display = "block";
       document.body.appendChild(canvas);
       const image = canvas
         .toDataURL("image/png")
         .replace("image/png", "image/octet-stream");
-        // console.log(canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, ""), 'imagesss');
         let img = canvas.toDataURL("image/png").replace(/^data:image\/(png|jpg);base64,/, "")
         this.generatedImage.push(img)
 
@@ -1584,7 +1583,9 @@ export class CardsComponent implements OnInit {
         FileSaver.saveAs(content, "cards.zip");
         
       });
-    }
+    }      
+
+        
         
         
 
@@ -1617,25 +1618,6 @@ export class CardsComponent implements OnInit {
 
   }
 
-  async download(name:any) {
-
-    
-    // this.individualDownload('cards')
-    // var zip = new JSZip();
-    // // const canvas =  await html2canvas(
-    // //     document.getElementById("card") as HTMLImageElement
-    // //   );
-
-    // //   zip.file("image.png", savable.src.substr(savable.src.indexOf(',')+1), {base64: true});
-
-    // zip.file("Title.txt", 'title');
-    // var imgFolder = zip.folder("cards");
-
-    // zip.generateAsync({ type: "blob" })
-    //   .then(function (content: any) {
-    //     FileSaver.saveAs(content, "cards.zip");
-    //   });
-  }
 
 
 
