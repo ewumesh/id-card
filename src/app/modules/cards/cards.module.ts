@@ -8,6 +8,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTableModule} from '@angular/material/table';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import { CardsComponent } from './cards.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -15,7 +19,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [CardsComponent],
-    imports: [ CommonModule,MatTabsModule,MatExpansionModule, FormsModule,ReactiveFormsModule,
+    imports: [ CommonModule,MatTabsModule,MatExpansionModule, FormsModule,ReactiveFormsModule,MatTableModule,MatProgressBarModule,
+        MatPaginatorModule,QRCodeModule,
         MatGridListModule,MatFormFieldModule,MatToolbarModule,MatInputModule,MatCheckboxModule, RouterModule.forChild([
         {path: '', component: CardsComponent}
     ]) ],
